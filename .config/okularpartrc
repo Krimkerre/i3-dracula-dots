@@ -1,0 +1,28 @@
+[$Version]
+update_info=okular.upd:annotation-toolbar,okular.upd:builtin-annotations
+
+[Core General]
+ObeyDRM=false
+
+[Dlg Accessibility]
+RecolorBackground=40,42,54
+RecolorForeground=199,199,199
+
+[Document]
+ChangeColors=true
+RenderMode=Recolor
+
+[General]
+ShellOpenFileInTabs=true
+SwitchToTabIfOpen=true
+
+[Main View]
+ShowBottomBar=true
+ShowLeftPanel=false
+SplitterSizes=334,602
+
+[PageView]
+TrimMargins=true
+
+[Reviews]
+QuickAnnotationTools=<tool name="Yellow Highlighter" id="1" type="highlight"><engine color="#ffff00" type="TextSelector"><annotation color="#ffffff00" type="Highlight"/></engine><shortcut>1</shortcut></tool>,<tool name="Green Highlighter" id="2" type="highlight"><engine color="#00ff00" type="TextSelector"><annotation color="#ff00ff00" type="Highlight"/></engine><shortcut>2</shortcut></tool>,<tool id="3" type="underline"><engine color="#ff0000" type="TextSelector"><annotation color="#ffff0000" type="Underline"/></engine><shortcut>3</shortcut></tool>,<tool name="Insert Text" id="4" type="typewriter"><engine block="true" type="PickPoint"><annotation width="0" textColor="#000000" color="#00ffffff" type="Typewriter"/></engine><shortcut>4</shortcut></tool>,<tool id="5" type="note-inline"><engine block="true" hoverIcon="tool-note-inline" color="#ffff00" type="PickPoint"><annotation textColor="#ff000000" color="#ffffff00" type="FreeText"/></engine><shortcut>5</shortcut></tool>,<tool id="6" type="note-linked"><engine hoverIcon="tool-note" color="#ffff00" type="PickPoint"><annotation icon="Note" color="#ffffff00" type="Text"/></engine><shortcut>6</shortcut></tool>
