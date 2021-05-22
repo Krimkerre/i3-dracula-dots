@@ -49,3 +49,4 @@ xorg-xbacklight
 xclip
 micro
 gvfs
+firefox
