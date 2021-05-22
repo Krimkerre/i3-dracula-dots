@@ -109,6 +109,12 @@ echo "##########################################################################
 
 sudo pacman -S   --noconfirm --needed - < packages-desktop.txt
 
+cp -R .config/* ~/.config/
+cp -R .gtkrc-2.0 ~/.gtkrc-2.0
+chmod -R +x ~/.config/i3/scripts 
+dbus-launch dconf load / < xed.dconf
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
+
 
 clear
 echo "################################################################################"
@@ -134,15 +140,11 @@ rm Tela-icon-theme -R -f
 
 clear
 echo "################################################################################"
-echo "### Final touches				                                               ###"
+echo "### Final touches				                                                     ###"
 echo "################################################################################"
 
 
-cp -R .config/* ~/.config/
-cp -R .gtkrc-2.0 ~/.gtkrc-2.0
-chmod -R +x ~/.config/i3/scripts 
-dbus-launch dconf load / < xed.dconf
-echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
+
 
 sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
 Section "InputClass"
