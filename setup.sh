@@ -10,6 +10,7 @@
 
 #!/usr/bin/env bash
 
+clear
 echo "################################################################################"
 echo "### Installing YAY                                                           ###"
 echo "################################################################################"
@@ -19,6 +20,16 @@ cd yay
 makepkg -si   --noconfirm --needed
 cd ..
 rm yay -R -f
+
+clear
+echo "################################################################################"
+echo "### Install XORG Display                                                     ###"
+echo "################################################################################"
+sleep 2
+sudo pacman -S   --noconfirm --needed xorg
+sudo pacman -S   --noconfirm --needed xorg-drivers
+sudo pacman -S   --noconfirm --needed xorg-xinit
+sudo pacman -S   --noconfirm --needed xterm
 
 clear
 echo "################################################################################"
@@ -37,16 +48,6 @@ sudo pacman -S   --noconfirm --needed - < packages-bluetooth.txt
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
-
-clear
-echo "################################################################################"
-echo "### Install XORG Display                                                     ###"
-echo "################################################################################"
-sleep 2
-sudo pacman -S   --noconfirm --needed xorg
-sudo pacman -S   --noconfirm --needed xorg-drivers
-sudo pacman -S   --noconfirm --needed xorg-xinit
-sudo pacman -S   --noconfirm --needed xterm
 
 clear
 echo "################################################################################"
