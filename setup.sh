@@ -138,13 +138,6 @@ sh ./install.sh purple
 cd ..
 rm Tela-icon-theme -R -f
 
-clear
-echo "################################################################################"
-echo "### Final touches				                                                     ###"
-echo "################################################################################"
-
-
-
 
 sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
 Section "InputClass"
