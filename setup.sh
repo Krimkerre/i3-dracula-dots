@@ -10,6 +10,7 @@
 
 #!/usr/bin/env bash
 
+clear
 echo "################################################################################"
 echo "### Installing YAY                                                           ###"
 echo "################################################################################"
@@ -19,6 +20,25 @@ cd yay
 makepkg -si   --noconfirm --needed
 cd ..
 rm yay -R -f
+
+clear
+echo "################################################################################"
+echo "### Install XORG Display                                                     ###"
+echo "################################################################################"
+sleep 2
+sudo pacman -S   --noconfirm --needed xorg-server
+sudo pacman -S   --noconfirm --needed xorg-xbacklight
+sudo pacman -S   --noconfirm --needed xorg-xdpyinfo
+sudo pacman -S   --noconfirm --needed xorg-xinit
+sudo pacman -S   --noconfirm --needed xorg-xinput
+sudo pacman -S   --noconfirm --needed xorg-xkill
+sudo pacman -S   --noconfirm --needed xorg-xrandr
+sudo pacman -S   --noconfirm --needed xorg-xbacklight
+sudo pacman -S   --noconfirm --needed xorg-xdpyinfo
+sudo pacman -S   --noconfirm --needed xterm
+sudo pacman -S   --noconfirm --needed xorg-drivers
+
+
 
 clear
 echo "################################################################################"
@@ -37,16 +57,6 @@ sudo pacman -S   --noconfirm --needed - < packages-bluetooth.txt
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
-
-clear
-echo "################################################################################"
-echo "### Install XORG Display                                                     ###"
-echo "################################################################################"
-sleep 2
-sudo pacman -S   --noconfirm --needed xorg
-sudo pacman -S   --noconfirm --needed xorg-drivers
-sudo pacman -S   --noconfirm --needed xorg-xinit
-sudo pacman -S   --noconfirm --needed xterm
 
 clear
 echo "################################################################################"
@@ -108,6 +118,12 @@ echo "##########################################################################
 
 sudo pacman -S   --noconfirm --needed - < packages-desktop.txt
 
+cp -R .config/* ~/.config/
+cp -R .gtkrc-2.0 ~/.gtkrc-2.0
+chmod -R +x ~/.config/i3/scripts 
+dbus-launch dconf load / < xed.dconf
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
+
 
 clear
 echo "################################################################################"
@@ -131,17 +147,16 @@ sh ./install.sh purple
 cd ..
 rm Tela-icon-theme -R -f
 
-clear
-echo "################################################################################"
-echo "### Final touches				                                               ###"
-echo "################################################################################"
 
+sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
+Section "InputClass"
+        Identifier "touchpad"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection
 
-cp -R .config/* ~/.config/
-cp -R .gtkrc-2.0 ~/.gtkrc-2.0
-chmod -R +x ~/.config/i3/scripts 
-dbus-launch dconf load / < xed.dconf
-echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
+EOF
 
 sudo pacman -Rsn $(pacman -Qdtq) --noconfirm
 
