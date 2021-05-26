@@ -1,6 +1,5 @@
 acpi
 arandr
-arc-gtk-theme
 archlinux-xdg-menu
 capitaine-cursors
 celluloid
@@ -19,25 +18,21 @@ i3lock
 i3status
 jq
 kitty
-libreoffice-fresh
 lxappearance-gtk3
 micro
 network-manager-applet
 nitrogen
-okular
 otf-font-awesome
 paprefs
 picom
 polkit-gnome
 python-pip
 python-setuptools
-qbittorrent
 rofi
 samba
 scrot
 seahorse
 sysstat
-telegram-desktop
 thunar
 thunar-archive-plugin
 thunar-volman
@@ -48,6 +43,4 @@ xcursor-neutral
 xdg-user-dirs-gtk
 xed
 xfce4-terminal
-xorg-xbacklight
-xorg-xdpyinfo
 
