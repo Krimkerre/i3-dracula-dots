@@ -26,6 +26,7 @@ echo "##########################################################################
 echo "### Install XORG Display                                                     ###"
 echo "################################################################################"
 sleep 2
+
 sudo pacman -S   --noconfirm --needed xorg-server
 sudo pacman -S   --noconfirm --needed xorg-xbacklight
 sudo pacman -S   --noconfirm --needed xorg-xdpyinfo
@@ -37,8 +38,6 @@ sudo pacman -S   --noconfirm --needed xorg-xbacklight
 sudo pacman -S   --noconfirm --needed xorg-xdpyinfo
 sudo pacman -S   --noconfirm --needed xterm
 sudo pacman -S   --noconfirm --needed xorg-drivers
-
-
 
 clear
 echo "################################################################################"
