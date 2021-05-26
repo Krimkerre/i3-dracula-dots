@@ -3,6 +3,6 @@ bluez
 bluez-libs
 bluez-utils
 bluez-plugins
-blueberry
+blueman
 bluez-tools
 bluez-cups
