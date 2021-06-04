@@ -112,20 +112,6 @@ fi
 
 clear
 echo "################################################################################"
-echo "### Installing i3-gaps and apps                                              ###"
-echo "################################################################################"
-
-sudo pacman -S   --noconfirm --needed - < packages-desktop.txt
-
-cp -R .config/* ~/.config/
-cp -R .gtkrc-2.0 ~/.gtkrc-2.0
-chmod -R +x ~/.config/i3/scripts 
-dbus-launch dconf load / < xed.dconf
-echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
-
-
-clear
-echo "################################################################################"
 echo "### Installing AUR packages                                                  ###"
 echo "################################################################################"
 
@@ -157,7 +143,20 @@ EndSection
 
 EOF
 
-sudo pacman -Rsn $(pacman -Qdtq) --noconfirm
+
+
+clear
+echo "################################################################################"
+echo "### Installing i3-gaps and apps                                              ###"
+echo "################################################################################"
+
+sudo pacman -S   --noconfirm --needed - < packages-desktop.txt
+
+cp -R .config/* ~/.config/
+cp -R .gtkrc-2.0 ~/.gtkrc-2.0
+chmod -R +x ~/.config/i3/scripts 
+dbus-launch dconf load / < xed.dconf
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
 
 clear
 echo "##############################################################################"
