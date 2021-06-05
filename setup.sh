@@ -118,7 +118,6 @@ echo "##########################################################################
 # System tools
 yay -S autotiling   --noconfirm --needed
 yay -S qt5-styleplugins   --noconfirm --needed
-yay -S ufetch-git   --noconfirm --needed
 
 
 # Internet
