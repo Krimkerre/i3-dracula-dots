@@ -118,6 +118,8 @@ echo "##########################################################################
 # System tools
 yay -S autotiling   --noconfirm --needed
 yay -S qt5-styleplugins   --noconfirm --needed
+yay -S pfetch-git   --noconfirm --needed
+
 
 # Internet
 yay -S mailspring   --noconfirm --needed
@@ -157,6 +159,8 @@ cp -R .gtkrc-2.0 ~/.gtkrc-2.0
 chmod -R +x ~/.config/i3/scripts 
 dbus-launch dconf load / < xed.dconf
 echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile
+
+pacman -Rsn $(pacman -Qdtq) --noconfirm
 
 clear
 echo "##############################################################################"
