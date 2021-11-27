@@ -413,4 +413,3 @@ bindsym $mod+t exec rofi -show window \
 #bindsym F10 exec rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi  
 
-
