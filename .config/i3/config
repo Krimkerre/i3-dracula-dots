@@ -137,7 +137,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/shutdown_menu -p rofi -c
+bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
@@ -207,8 +207,8 @@ bindsym $mod+a focus parent
 ## Multimedia Keys
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # volume
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
@@ -232,7 +232,9 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+Shift+Return exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
+#bindsym $mod+n exec /usr/bin/nemo
 bindsym Print exec "scrot ~/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png"
+bindsym $mod+m workspace $ws4, exec kitty -e ncspot
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -257,6 +259,7 @@ assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Nemo"] $ws3
 assign [class="TelegramDesktop"] $ws5
+assign [class="KotatogramDesktop"] $ws5
 assign [class="Mailspring"] $ws6
 assign [class="^libreoffice-startcenter$"] $ws7
 assign [class="krita"] $ws8
@@ -271,6 +274,7 @@ for_window [class=Thunar] focus
 for_window [class=Nemo] focus
 for_window [class=Mailspring] focus
 for_window [class=TelegramDesktop] focus
+for_window [class=KotatogramDesktop] focus
 for_window [class=krita] focus
 for_window [class=Pinta] focus
 for_window [class=Inkscape] focus
@@ -292,6 +296,15 @@ exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # num lock activated
 #exec --no-startup-id numlockx on
 
+# caps lock indicator
+#exec --no-startup-id indicator-keylock
+
+# start conky: 
+#exec_always --no-startup-id conky
+
+# start a script to setup displays
+# uncomment the next line, use arandr to setup displays and save the file as monitor:
+#exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # start blueberry app for managing bluetooth devices from tray:
 exec --no-startup-id blueberry-tray
@@ -305,6 +318,7 @@ exec --no-startup-id nm-applet
 
 # set wallpaper
 exec --no-startup-id nitrogen --restore
+#exec --no-startup-id feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros_i3.png
 
 #set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -319,6 +333,9 @@ exec --no-startup-id playerctld daemon
 exec --no-startup-id setxkbmap eu
 
 # Autostart apps as you like
+#exec --no-startup-id sleep 2 && xfce4-terminal
+#exec --no-startup-id firefox
+#exec --no-startup-id sleep 3 && thunar
 exec_always --no-startup-id autotiling
 
 # set floating (nontiling)for apps needing it
@@ -362,7 +379,9 @@ bindsym $mod+Ctrl+b bar mode toggle
 bar {
 	   font pango:Noto Sans Regular 11, FontAwesome 11
     status_command i3blocks -c ~/.config/i3/i3blocks.conf 
+#    i3bar_command i3bar --transparency
     position top
+    tray_padding 4
     colors {
       separator          #666666
         background         #282a36
@@ -378,23 +397,20 @@ bar {
 # Application menu handled by rofi: #
 #####################################
 
-## rofi bindings fancy application menu (two bindings F9/$mod+i)
+## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+i exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
-                -columns 2 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+bindsym $mod+space exec rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
                 
-bindsym $mod+space exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
-                -columns 2 -padding 30 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+#bindsym F9 exec rofi -modi drun -show drun \
+#		-config ~/.config/rofi/rofidmenu.rasi
+		
+## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
-## rofi bindings for window menu (two bindings F10/$mod+t)
+bindsym $mod+t exec rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi 
 
-bindsym $mod+t exec rofi -show window -display-window "Window : " -line-padding 4 \
-                -lines 10 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+#bindsym F10 exec rofi -show window \
+#		-config ~/.config/rofi/rofidmenu.rasi  
 
-bindsym F10 exec rofi -show window -display-window "Window : " -line-padding 4 \
-                -lines 10 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
 
