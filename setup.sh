@@ -125,6 +125,7 @@ yay -S mailspring   --noconfirm --needed
 
 # Theming
 yay -S dracula-gtk-theme   --noconfirm --needed
+yay -S xcursor-neutral --noconfirm --needed
 
 git clone https://github.com/vinceliuice/Tela-icon-theme.git
 cd Tela-icon-theme
