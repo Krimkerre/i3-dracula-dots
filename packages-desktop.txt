@@ -39,7 +39,6 @@ thunar-volman
 tumbler
 xbindkeys
 xclip
-xcursor-neutral
 xdg-user-dirs-gtk
 xed
 xfce4-terminal
